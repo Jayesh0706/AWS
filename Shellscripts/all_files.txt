@@ -1,0 +1,8 @@
+PING google.com (142.250.192.46) 56(84) bytes of data.
+64 bytes from bom12s15-in-f14.1e100.net (142.250.192.46): icmp_seq=1 ttl=118 time=4.03 ms
+64 bytes from bom12s15-in-f14.1e100.net (142.250.192.46): icmp_seq=2 ttl=118 time=8.55 ms
+64 bytes from bom12s15-in-f14.1e100.net (142.250.192.46): icmp_seq=3 ttl=118 time=8.04 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 4.034/6.875/8.550/2.019 ms

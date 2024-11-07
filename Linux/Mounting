@@ -1,0 +1,23 @@
+Here are the commands you'll need to mount your EBS volume to an EC2 instance:
+1. Run the command to show the volumes: lsblk
+2. List the disk partition on the system: sudo fdisk -l
+3. Check the file system: sudo file -s /dev/xvdk(path in your system for added partition)
+4. If the output is data, then create the file system: sudo mkfs -t xfs /dev/xvdk (-t is type)
+5. Recheck the file system: sudo file -s /dev/xvdk
+6. Create a mount point directory for the volume: sudo mkdir /mydata (to make mydata as mounting point)
+7. Mount the volume: sudo mount /dev/xvdk /mydata
+8. Run df -h to view the data: df -h
+9.To remove mounting : sudo umount /dev/xvdk (First go outside directory else it will show target busy) 
+
+
+Still its not permanently mount so for mounting permanently follow below steps 
+1)After mounting your volume use following cmd and copy UUID of your new attached ebs - blkid
+  For ubuntu - sudo lsblk -o +UUID
+
+2)sudo nano /etc/fstab
+UUID=<attached ebs's UUID>   <your mount point path>     <your file system>    defaults,nofail   0   2
+
+We specify 0 to prevent the file system from being dumped, and we specify 2 to indicate that it is a non-root device.
+
+eg.
+UUID=374ac79f-92a8-4cf3-957f-da91b78d711e    /home/ec2-user/mountPoint     xfs    defaults,nofail  0   2

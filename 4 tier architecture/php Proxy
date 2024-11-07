@@ -1,0 +1,10 @@
+proxy request to pvt php server ( add these lines in public ec2 nginx conf)
+add below lines in nginx.conf and make sure if its successful or not using = nginx -t
+
+location ~ \.php$ {
+        proxy_pass http://10.0.19.87;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
